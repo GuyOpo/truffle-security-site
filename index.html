@@ -180,8 +180,8 @@
 
     .slide-body {
       flex: 1; background: var(--dark2);
-      padding: 5rem 4.5rem 5rem 4rem;
-      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 3rem 4rem;
+      display: flex; flex-direction: column; justify-content: flex-start;
       overflow-y: auto;
     }
 
@@ -192,15 +192,15 @@
       margin-bottom: -1.8rem; user-select: none;
     }
     .sec-label {
-      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.85rem;
+      font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.9rem;
     }
     .sec-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 2.2vw, 2rem); font-weight: 700;
-      color: #fff; line-height: 1.2; margin-bottom: 1.6rem;
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-weight: 700;
+      color: #fff; line-height: 1.2; margin-bottom: 1.4rem;
     }
-    .gold-bar { width: 30px; height: 2px; background: var(--gold); margin-bottom: 1.8rem; }
+    .gold-bar { width: 30px; height: 2px; background: var(--gold); margin-bottom: 1.6rem; }
 
     /* ── BULLETS ───────────────────────────────── */
     .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
@@ -240,23 +240,24 @@
 
     /* ── ASSESSMENT METRICS ────────────────────── */
     .assess-lead {
-      font-size: 0.88rem; color: rgba(245,240,232,0.52);
+      font-size: 0.95rem; color: rgba(245,240,232,0.6);
       font-style: italic; line-height: 1.7; margin-bottom: 1.4rem;
     }
     .metrics-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
     }
     .metric-card {
+      flex: 0 0 calc(33% - 8px);
       background: rgba(200,169,110,0.05);
       border: 1px solid rgba(200,169,110,0.12);
-      border-radius: 8px; padding: 1rem 0.6rem;
-      text-align: center; display: flex; flex-direction: column; gap: 0.4rem;
+      border-radius: 8px; padding: 1.3rem 1rem;
+      text-align: center; display: flex; flex-direction: column; gap: 0.5rem;
     }
-    .m-name { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.38); }
-    .m-before { font-size: 0.92rem; color: rgba(245,240,232,0.27); text-decoration: line-through; text-decoration-color: rgba(180,70,70,0.4); }
-    .m-arrow { font-size: 0.72rem; color: rgba(200,169,110,0.4); }
-    .m-after { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--gold); line-height: 1; }
-    .m-driver { font-size: 0.6rem; color: rgba(245,240,232,0.28); font-style: italic; }
+    .m-name { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,240,232,0.55); }
+    .m-before { font-size: 1.05rem; color: rgba(245,240,232,0.35); text-decoration: line-through; text-decoration-color: rgba(180,70,70,0.5); }
+    .m-arrow { font-size: 0.85rem; color: rgba(200,169,110,0.5); }
+    .m-after { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .m-driver { font-size: 0.72rem; color: rgba(245,240,232,0.4); font-style: italic; }
 
     /* ── CLICKABLE METRIC CARDS ────────────────── */
     .metric-card {
