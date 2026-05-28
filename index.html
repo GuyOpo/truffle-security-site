@@ -280,72 +280,80 @@
     /* ── MOBILE ────────────────────────────────── */
     @media (max-width: 768px) {
 
-      /* Nav: hide menu, tighten padding */
+      /* Nav: hide menu links */
       nav { padding: 0.9rem 1.5rem; }
       .nav-links { display: none; }
 
       /* Hero */
       #hero { padding: 4rem 1.8rem 5rem; }
-      .hero-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-      .hero-sub { font-size: 0.9rem; }
+      .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+      .hero-sub { font-size: 0.88rem; }
 
       /* Agenda */
-      .agenda-inner { padding: 5.5rem 2rem 3.5rem; max-width: 100%; }
-      .agenda-heading { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.6rem; }
-      .a-btn { font-size: 1rem; }
+      .agenda-inner { padding: 5rem 1.8rem 3rem; max-width: 100%; }
+      .agenda-heading { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 1.4rem; }
+      .a-btn { font-size: 0.95rem; }
 
-      /* Content slides: image becomes full-bleed background */
+      /* Content slides: stack image on top, content below */
+      .slide { flex-direction: column; }
+
       .slide-img {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        inset: unset;
         width: 100%;
-        height: 100%;
+        height: 26vh;
+        flex-shrink: 0;
+        background: var(--dark);
       }
-      /* Dark gradient overlay so text stays readable */
-      .slide-img::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0,0,0,0.95) 0%,
-          rgba(0,0,0,0.75) 40%,
-          rgba(0,0,0,0.45) 100%
-        );
+      /* No overlay on the stacked image — show it clean */
+      .slide-img::after { display: none; }
+
+      .slide-img img {
+        object-fit: contain;   /* full image, no cropping */
+        object-position: center;
       }
-      /* Body panel floats above the image */
+
+      /* Content panel below the image */
       .slide-body {
         position: relative;
-        z-index: 2;
+        z-index: 1;
         width: 100%;
-        background: transparent;
-        padding: 6.5rem 1.8rem 3rem;
-        justify-content: flex-end;
+        background: var(--dark2);
+        padding: 1.4rem 1.6rem 3.5rem;
+        justify-content: flex-start;
+        flex: 1;
+        overflow-y: auto;
       }
 
-      /* Section number: smaller */
-      .sec-num { font-size: 3.5rem; margin-bottom: -1rem; }
-      .sec-title { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+      /* Section number: tighter */
+      .sec-num { font-size: 3rem; margin-bottom: -0.8rem; }
+      .sec-title { font-size: clamp(1.15rem, 5vw, 1.5rem); margin-bottom: 1.1rem; }
+      .gold-bar { margin-bottom: 1.2rem; }
 
-      /* Bullets: slightly smaller on mobile */
-      .bullet-text { font-size: 1.1rem; }
-      .bullet-item { padding: 0.75rem 0.9rem; }
+      /* Bullets */
+      .bullet-list { gap: 0.1rem; }
+      .bullet-item { padding: 0.65rem 0.8rem; }
+      .bullet-text { font-size: 1.05rem; }
+      .bullet-cue { display: none; }   /* hide cue text on mobile */
 
-      /* Assessment metrics: 3-col grid */
-      .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-      .m-after { font-size: 1.35rem; }
+      /* Assessment metrics: 3 cols */
+      .assess-lead { font-size: 0.8rem; margin-bottom: 1rem; }
+      .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+      .m-after { font-size: 1.2rem; }
+      .m-name { font-size: 0.52rem; }
 
-      /* Scroll hint: move left so dots don't clash */
-      .hint { right: auto; left: 50%; transform: translateX(-50%); bottom: 3.4rem; }
+      /* Hint */
+      .hint { bottom: 3rem; right: 1.4rem; }
 
-      /* Modal: full-width sheet from bottom */
+      /* Modal: bottom sheet */
       .modal-overlay { padding: 0; align-items: flex-end; }
       .modal-card {
         border-radius: 20px 20px 0 0;
         max-width: 100%;
         padding: 2rem 1.6rem 2.4rem;
       }
-      .modal-title { font-size: 1.4rem; }
+      .modal-title { font-size: 1.35rem; }
+      .modal-body { font-size: 0.92rem; }
     }
   </style>
 </head>
