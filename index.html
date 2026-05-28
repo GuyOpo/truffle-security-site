@@ -124,7 +124,16 @@
     .hero-author { font-size: 2rem; font-weight: 700; letter-spacing: 0.06em; color: var(--gold); }
 
     /* ── AGENDA ────────────────────────────────── */
-    #agenda { align-items: center; justify-content: center; background: var(--dark2); }
+    #agenda { align-items: center; justify-content: center; }
+    .agenda-bg {
+      position: absolute; inset: 0;
+      background: url('images/Agenda2.png') center/cover no-repeat;
+    }
+    .agenda-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.72);
+    }
+    .agenda-inner { position: relative; z-index: 2; }
     .agenda-inner { max-width: 680px; width: 100%; padding: 3rem 5rem; }
     .agenda-tag {
       font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
@@ -393,6 +402,7 @@
 
   <!-- 1 · AGENDA -->
   <section class="slide" id="agenda">
+    <div class="agenda-bg"></div>
     <div class="agenda-inner">
       <p class="agenda-tag">Today's Session</p>
       <h2 class="agenda-heading">Agenda</h2>
