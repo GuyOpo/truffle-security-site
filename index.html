@@ -245,6 +245,23 @@
     .m-after { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--gold); line-height: 1; }
     .m-driver { font-size: 0.6rem; color: rgba(245,240,232,0.28); font-style: italic; }
 
+    /* ── CLICKABLE METRIC CARDS ────────────────── */
+    .metric-card {
+      cursor: pointer;
+      transition: background 0.17s, border-color 0.17s, transform 0.17s;
+    }
+    .metric-card:hover {
+      background: rgba(200,169,110,0.12);
+      border-color: rgba(200,169,110,0.4);
+      transform: translateY(-2px);
+    }
+    .m-cue {
+      font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(200,169,110,0.35); margin-top: 0.2rem;
+      transition: color 0.17s;
+    }
+    .metric-card:hover .m-cue { color: var(--gold); }
+
     /* ── MODAL ─────────────────────────────────── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 500;
@@ -300,27 +317,30 @@
       .slide-body {
         width: 100%;
         background: var(--dark2);
-        padding: 5.5rem 1.6rem 3.5rem;
+        padding: 5rem 1.8rem 4rem;
         justify-content: center;
         overflow-y: auto;
       }
 
-      /* Section number: tighter */
-      .sec-num { font-size: 3rem; margin-bottom: -0.8rem; }
-      .sec-title { font-size: clamp(1.15rem, 5vw, 1.5rem); margin-bottom: 1.1rem; }
-      .gold-bar { margin-bottom: 1.2rem; }
+      /* Section number: generous */
+      .sec-num { font-size: 5rem; margin-bottom: -1.5rem; }
+      .sec-label { font-size: 0.72rem; margin-bottom: 1rem; }
+      .sec-title { font-size: clamp(1.5rem, 6vw, 2rem); margin-bottom: 1.4rem; }
+      .gold-bar { margin-bottom: 1.6rem; }
 
-      /* Bullets */
-      .bullet-list { gap: 0.1rem; }
-      .bullet-item { padding: 0.65rem 0.8rem; }
-      .bullet-text { font-size: 1.05rem; }
-      .bullet-cue { display: none; }   /* hide cue text on mobile */
+      /* Bullets: large and readable */
+      .bullet-list { gap: 0.2rem; }
+      .bullet-item { padding: 0.85rem 1rem; }
+      .bullet-text { font-size: 1.3rem; }
+      .bullet-cue { display: none; }
 
-      /* Assessment metrics: 3 cols */
-      .assess-lead { font-size: 0.8rem; margin-bottom: 1rem; }
-      .metrics-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
-      .m-after { font-size: 1.2rem; }
-      .m-name { font-size: 0.52rem; }
+      /* Assessment metrics: 2x3 grid, bigger cards */
+      .assess-lead { font-size: 0.9rem; margin-bottom: 1.2rem; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .m-after { font-size: 1.8rem; }
+      .m-name { font-size: 0.62rem; }
+      .m-before { font-size: 1rem; }
+      .metric-card { padding: 1.2rem 0.8rem; }
 
       /* Hint */
       .hint { bottom: 3rem; right: 1.4rem; }
@@ -394,30 +414,45 @@
       <div class="gold-bar"></div>
       <p class="assess-lead">Same 65 dials per day. Better engine. Double the output.</p>
       <div class="metrics-grid">
-        <div class="metric-card">
+        <div class="metric-card"
+             data-section="Assessment" data-title="Connect Rate"
+             data-body="The root cause is data quality. 37% of phone numbers in the system are bad or disconnected, which artificially tanks the connect rate. Fix starts with a data audit in partnership with RevOps: scrubbing bad numbers, validating records at point of entry, and enriching with Clay or ZoomInfo. When SDRs are dialing verified numbers, connect rate climbs without changing a single rep behavior.">
           <span class="m-name">Connect Rate</span>
           <span class="m-before">2.9%</span><span class="m-arrow">↓</span>
           <span class="m-after">4%</span><span class="m-driver">Data hygiene</span>
+          <span class="m-cue">Click ↗</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card"
+             data-section="Assessment" data-title="Connect to Meeting"
+             data-body="A pure enablement gap. SDRs are reaching prospects but not converting the conversation into a booked meeting. The fix is focused pitch training: tighten the opener to 15 seconds, sharpen the value proposition for AppSec and ProdSec buyers, and practice objection handling until it's reflexive. Active listening and video selling layer in during the Repair phase and conversion steadily improves.">
           <span class="m-name">Connect → Mtg</span>
           <span class="m-before">15%</span><span class="m-arrow">↓</span>
           <span class="m-after">20%</span><span class="m-driver">Enablement</span>
+          <span class="m-cue">Click ↗</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card"
+             data-section="Assessment" data-title="No-Show Rate"
+             data-body="35% signals meetings are being booked without enough genuine buy-in from the prospect. The fix is three-part: better qualification at the point of booking, a confirmation sequence (email plus LinkedIn plus reminder call), and training SDRs to do a mini-close before hanging up. Confirm the time, confirm the value, confirm it is on their calendar. A meeting that was properly earned rarely goes dark.">
           <span class="m-name">No-Show Rate</span>
           <span class="m-before">35%</span><span class="m-arrow">↓</span>
           <span class="m-after">20%</span><span class="m-driver">Training</span>
+          <span class="m-cue">Click ↗</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card"
+             data-section="Assessment" data-title="Meetings Booked"
+             data-body="A downstream outcome of fixing connect rate and connect-to-meeting conversion. With more connects happening on verified numbers and a higher pitch-to-meeting rate, bookings increase without touching dial volume. The same 65 dials per day produce more meetings because every step of the funnel above it has been tightened.">
           <span class="m-name">Mtgs Booked</span>
           <span class="m-before">6</span><span class="m-arrow">↓</span>
           <span class="m-after">10</span><span class="m-driver">All of the above</span>
+          <span class="m-cue">Click ↗</span>
         </div>
-        <div class="metric-card">
+        <div class="metric-card"
+             data-section="Assessment" data-title="Meetings Attended"
+             data-body="The lagging result of fixing no-show rate and increasing bookings. Better-qualified meetings with strong confirmation sequences means prospects actually show up. Combined with the increase in total bookings, attended meetings double from 4 to 8 per SDR per week. This is the number that feeds pipeline, and it moves when everything upstream is working.">
           <span class="m-name">Mtgs Attended</span>
           <span class="m-before">4</span><span class="m-arrow">↓</span>
           <span class="m-after">8</span><span class="m-driver">All of the above</span>
+          <span class="m-cue">Click ↗</span>
         </div>
       </div>
     </div>
@@ -657,13 +692,17 @@
   });
 
   /* ── Modal ── */
+  function openModal(el) {
+    mEye.textContent = el.dataset.section;
+    mTit.textContent = el.dataset.title;
+    mBod.textContent = el.dataset.body;
+    modal.classList.add('active');
+  }
   document.querySelectorAll('.bullet-item').forEach(item => {
-    item.addEventListener('click', () => {
-      mEye.textContent = item.dataset.section;
-      mTit.textContent = item.dataset.title;
-      mBod.textContent = item.dataset.body;
-      modal.classList.add('active');
-    });
+    item.addEventListener('click', () => openModal(item));
+  });
+  document.querySelectorAll('.metric-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
   });
 
   function closeModal() { modal.classList.remove('active'); }
