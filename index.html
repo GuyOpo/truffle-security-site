@@ -55,7 +55,7 @@
     /* ── SLIDER ────────────────────────────────── */
     .slider {
       display: flex; flex-direction: row;
-      width: 100vw; height: 100vh;
+      width: 100vw; height: 100vh; height: 100dvh;
       overflow-x: scroll; overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scrollbar-width: none; -ms-overflow-style: none;
@@ -64,7 +64,7 @@
 
     /* ── SLIDE BASE ────────────────────────────── */
     .slide {
-      width: 100vw; min-width: 100vw; height: 100vh;
+      width: 100vw; min-width: 100vw; height: 100vh; height: 100dvh;
       flex-shrink: 0; scroll-snap-align: start;
       position: relative; display: flex;
     }
@@ -324,10 +324,13 @@
       nav { padding: 0.9rem 1.5rem; }
       .nav-links { display: none; }
 
-      /* Hero */
-      #hero { padding: 4rem 1.8rem 5rem; }
-      .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
-      .hero-sub { font-size: 0.88rem; }
+      /* Hero — lift text up so the author name clears the mobile
+         browser toolbar (more bottom padding + tighter spacing) */
+      #hero { padding: 4rem 1.8rem 7.5rem; }
+      .hero-eyebrow { margin-bottom: 0.9rem; }
+      .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); margin-bottom: 1.1rem; }
+      .hero-sub { font-size: 0.88rem; margin-bottom: 0.5rem; }
+      .hero-author { font-size: 1.6rem; }
 
       /* Agenda */
       .agenda-inner { padding: 5rem 1.8rem 3rem; max-width: 100%; }
@@ -357,7 +360,29 @@
       .bullet-text { font-size: 1.6rem; }
       .bullet-cue { display: none; }
 
-      /* Assessment metrics */
+      /* Assessment (#s2): tighten header so it doesn't eat the screen */
+      #s2 .slide-body { padding-top: 3.2rem; }
+      #s2 .sec-num { font-size: 3.4rem; margin-bottom: -0.9rem; }
+      #s2 .sec-label { margin-bottom: 0.5rem; }
+      #s2 .sec-title { font-size: clamp(1.4rem, 6vw, 1.9rem); margin-bottom: 0.6rem; }
+      #s2 .gold-bar { margin-bottom: 0.7rem; }
+      #s2 .assess-lead { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.9rem; }
+
+      /* Assessment metrics: full-width rows (no orphaned 5th card) */
+      #s2 .metrics-grid { display: flex; flex-direction: column; gap: 7px; }
+      #s2 .metric-card {
+        flex: 1 1 auto;
+        flex-direction: row; align-items: center;
+        text-align: left; gap: 0.55rem;
+        padding: 0.7rem 0.95rem;
+      }
+      #s2 .m-name { flex: 1; font-size: 0.72rem; }
+      #s2 .m-before { font-size: 0.95rem; }
+      #s2 .m-arrow { margin: 0 0.25rem; }
+      #s2 .m-after { font-size: 1.45rem; }
+      #s2 .m-driver, #s2 .m-cue { display: none; }
+
+      /* Other content slides keep their normal metric grid */
       .assess-lead { font-size: 0.9rem; margin-bottom: 1rem; }
       .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .m-after { font-size: 1.8rem; }
@@ -377,6 +402,42 @@
       }
       .modal-title { font-size: 1.35rem; }
       .modal-body { font-size: 0.92rem; }
+    }
+
+    /* ── LANDSCAPE PHONES (short height, any width) ───────────────
+       Phone landscape is often >768px wide, so it falls outside the
+       mobile block above and would use the desktop split — which is
+       far too tall for ~400px of height (cards get clipped at the
+       bottom). Here we hide the image, go full width, and lay the 5
+       metrics out as a single row of 5 (landscape has the width). */
+    @media (orientation: landscape) and (max-height: 560px) {
+      #s2 .slide-img { display: none; }
+      #s2 .slide-body {
+        width: 100%;
+        padding: 2.2rem 2.4rem 1.4rem;
+        justify-content: center;
+      }
+      #s2 .sec-num { font-size: 2.4rem; margin-bottom: -0.6rem; }
+      #s2 .sec-label { margin-bottom: 0.35rem; }
+      #s2 .sec-title { font-size: 1.4rem; line-height: 1.2; margin-bottom: 0.5rem; }
+      #s2 .gold-bar { margin-bottom: 0.6rem; }
+      #s2 .assess-lead { font-size: 0.8rem; margin-bottom: 0.9rem; }
+
+      #s2 .metrics-grid {
+        display: grid; grid-template-columns: repeat(5, 1fr);
+        gap: 9px; align-items: stretch;
+      }
+      #s2 .metric-card {
+        flex: none;
+        flex-direction: column; align-items: stretch;
+        text-align: center; gap: 0.25rem;
+        padding: 0.7rem 0.4rem;
+      }
+      #s2 .m-name { flex: none; font-size: 0.58rem; }
+      #s2 .m-before { font-size: 0.85rem; }
+      #s2 .m-arrow { margin: 0.12rem auto; }
+      #s2 .m-after { font-size: 1.3rem; }
+      #s2 .m-driver, #s2 .m-cue { display: none; }
     }
   </style>
 </head>
