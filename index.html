@@ -131,7 +131,7 @@
     }
     .agenda-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: rgba(0,0,0,0.72);
+      background: rgba(0,0,0,0.45);
     }
     .agenda-inner { position: relative; z-index: 2; }
     .agenda-inner { max-width: 680px; width: 100%; padding: 3rem 5rem; }
@@ -174,9 +174,7 @@
     }
     /* NO gradient fade — full images */
 
-    /* SDR Strategy image is wider (3:2) vs others (4:3) — contain preserves the spiral */
-    #s4 .slide-img { background: #000; }
-    #s4 .slide-img img { object-fit: contain; object-position: center center; }
+    /* SDR Strategy image now 16:9 like the rest — fill like the others */
 
     /* Assessment: tighten spacing so all 5 cards fit */
     #s2 .slide-body { padding-top: 3.5rem; }
