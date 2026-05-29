@@ -378,7 +378,17 @@
       }
       #s2 .m-name { flex: 1; font-size: 0.72rem; }
       #s2 .m-before { font-size: 0.95rem; }
-      #s2 .m-arrow { margin: 0 0.25rem; }
+      /* Green arrow connecting before → after */
+      #s2 .m-arrow {
+        width: auto; height: auto; background: none; overflow: visible;
+        margin: 0 0.5rem; font-size: 0; line-height: 1;
+        display: inline-flex; align-items: center;
+      }
+      #s2 .m-arrow::before {
+        content: "\2192"; /* → */
+        font-size: 1.1rem; font-weight: 700; line-height: 1;
+        color: #34C759;
+      }
       #s2 .m-after { font-size: 1.45rem; }
       #s2 .m-driver, #s2 .m-cue { display: none; }
 
@@ -435,7 +445,17 @@
       }
       #s2 .m-name { flex: none; font-size: 0.58rem; }
       #s2 .m-before { font-size: 0.85rem; }
-      #s2 .m-arrow { margin: 0.12rem auto; }
+      /* Green downward arrow connecting before ↓ after (stacked card) */
+      #s2 .m-arrow {
+        width: auto; height: auto; background: none; overflow: visible;
+        margin: 0.1rem auto; font-size: 0; line-height: 1;
+        display: flex; justify-content: center;
+      }
+      #s2 .m-arrow::before {
+        content: "\2193"; /* ↓ */
+        font-size: 0.95rem; font-weight: 700; line-height: 1;
+        color: #34C759;
+      }
       #s2 .m-after { font-size: 1.3rem; }
       #s2 .m-driver, #s2 .m-cue { display: none; }
     }
