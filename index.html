@@ -421,6 +421,15 @@
        bottom). Here we hide the image, go full width, and lay the 5
        metrics out as a single row of 5 (landscape has the width). */
     @media (orientation: landscape) and (max-height: 560px) {
+      /* Hero: desktop uses 8rem bottom padding which shoves the
+         bottom-aligned text too high on a short landscape screen.
+         Pull it back down and tighten the title. */
+      #hero { padding: 2.2rem 3rem 2.4rem; }
+      .hero-eyebrow { margin-bottom: 0.6rem; }
+      .hero-title { font-size: clamp(1.7rem, 4.5vw, 2.4rem); margin-bottom: 0.7rem; }
+      .hero-sub { margin-bottom: 0.4rem; }
+      .hero-author { font-size: 1.6rem; }
+
       #s2 .slide-img { display: none; }
       #s2 .slide-body {
         width: 100%;
